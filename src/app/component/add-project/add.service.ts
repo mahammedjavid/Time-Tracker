@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IAdd } from './interface';
 
 @Injectable({
@@ -10,15 +11,15 @@ export class AddService {
   constructor(private http: HttpClient) { }
 
 
-  postAddData(data: any) {
-    return this.http.post('http://localhost:3000/project', data)
+  postAddData(data: IAdd) {
+    return this.http.post<IAdd>('http://localhost:3000/project', data)
   }
 
-  getAddedData() {
+  getAddedData(): Observable<IAdd> {
     return this.http.get<IAdd>('http://localhost:3000/project')
   }
 
-  edit(data: any, id: number) {
+  edit(data: IAdd, id: number) {
     return this.http.put('http://localhost:3000/project' + '/' + id, data)
   }
 
