@@ -1,0 +1,48 @@
+<!-- <div class="container">
+    <form [formGroup]="addForm">
+        <input type="text" placeholder="Enter Project Title" class="input" formControlName="title">
+        <input type="text" placeholder="Enter Project Description" class="input" formControlName="description">
+        <input type="number" placeholder="Enter Time you have spent" class="input" formControlName="timeSpent">
+        <input type="date" placeholder="Enter the Date" class="input" formControlName="date">
+
+        <button type="submit" class="btn btn-warning" [disabled]="addForm.invalid" #btn>Submit</button>
+    </form>
+</div> -->
+
+
+<div class="addbtn">
+    <button class="add" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight">Add Task</button>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h3 id="offcanvasRightLabel">Add Task</h3>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"
+            id="close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form [formGroup]="addForm">
+            <input type="text" placeholder="Enter Project Title" class="input" formControlName="title">
+            <p class="text-danger"
+                *ngIf="addForm.controls['title'].hasError('required') && addForm.controls['title'].dirty">Please Enter
+                Valid Project
+                Title</p>
+            <textarea name="" id="" cols="10" rows="10" formControlName="description"
+                placeholder="Enter Project Description" class="input"></textarea>
+            <p class="text-danger"
+                *ngIf="addForm.controls['description'].hasError('required') && addForm.controls['description'].dirty">
+                Please Enter Valid Project Description</p>
+            <input type="number" placeholder="Enter Time you have spent" class="input" formControlName="timeSpent">
+            <p class="text-danger"
+                *ngIf="addForm.controls['timeSpent'].hasError('required') && addForm.controls['timeSpent'].dirty">Please
+                Enter Valid input</p>
+            <input type="date" placeholder="Enter the Date" class="input" formControlName="date">
+            <p class="text-danger"
+                *ngIf="addForm.controls['date'].hasError('required') && addForm.controls['date'].dirty">Please Enter
+                Valid Date</p>
+
+            <button type="submit" class="btn btn-warning w-100" [disabled]="addForm.invalid" #btn>Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<app-add-project (data)="gettingFromAddComponent($event)"></app-add-project>
+<h2 class="text-center">Update Project Details</h2>
+<h3 class="text-center">{{isItemsInServer}}</h3>
+
+
+<div class="containerx" *ngFor="let data of projectData$">
+    <div class="data">
+        <p>Task Name : <strong>{{data.title}}</strong></p>
+        <p>Task Description : <strong>{{data.description}}</strong></p>
+        <p>Date : <strong>{{data.date}}</strong></p>
+        <p>Effort : <strong>{{data.timeSpent}}</strong></p>
+    </div>
+    <div class="actions">
+        <button class="mx-1" (click)="editBtn(data)" type="button" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Edit</button>
+        <button class="mx-1" (click)="deleteData(data.id)">Delete</button>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editForm">
+                    <input type="text" placeholder="Enter Project Title" class="input" formControlName="title">
+                    <p class="text-danger"
+                        *ngIf="editForm.controls['title'].hasError('required') && editForm.controls['title'].dirty">
+                        Please
+                        Enter
+                        Title</p>
+                    <input type="text" placeholder="Enter Project Description" class="input"
+                        formControlName="description">
+                    <p class="text-danger"
+                        *ngIf="editForm.controls['description'].hasError('required') && editForm.controls['description'].dirty">
+                        Please
+                        Enter
+                        Valid Decription</p>
+                    <input type="number" placeholder="Enter Time you have spent" class="input"
+                        formControlName="timeSpent">
+                    <p class="text-danger"
+                        *ngIf="editForm.controls['timeSpent'].hasError('required') && editForm.controls['timeSpent'].dirty">
+                        Please
+                        Enter
+                        Valid hour</p>
+                    <input type="date" placeholder="Enter the Date" class="input" formControlName="date">
+                    <p class="text-danger"
+                        *ngIf="editForm.controls['date'].hasError('required') && editForm.controls['date'].dirty">Please
+                        Enter
+                        Valid Date</p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel">Close</button>
+                <button type="submit" class="btn btn-primary" #editSubmit>Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
