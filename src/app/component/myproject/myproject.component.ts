@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { exhaustMap, fromEvent, shareReplay, tap } from 'rxjs';
-import { AddService } from '../add-project/add.service';
+import { AddService } from '../../add.service';
 
 @Component({
   selector: 'app-myproject',

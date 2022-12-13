@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { fromEvent, exhaustMap } from 'rxjs';
-import { AddService } from './add.service';
+import { AddService } from '../../add.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
