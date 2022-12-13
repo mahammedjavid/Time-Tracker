@@ -45,14 +45,10 @@ export class AddProjectComponent implements AfterViewInit, OnInit {
 
   addFormSubmit() {
     console.log('hi')
-    let date = new Date();
-    let time = date.getHours() + ":" + date.getMinutes()
     let form = {
       title: this.addForm.value.title,
       description: this.addForm.value.description,
       timeSpent: this.addForm.value.timeSpent,
-      time: time,
-      status: '',
       date: this.addForm.value.date
     }
     return this.addService.postAddData(form)
